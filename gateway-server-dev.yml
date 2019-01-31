@@ -3,3 +3,12 @@ server:
 spring:
   application:
     name: gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: custom-server
+        uri: lb://custom-server
+        predicates:
+        - Path=/customserver/**
+        filters:
+        - StripPrefix=1
